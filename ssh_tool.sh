@@ -320,7 +320,7 @@ case $choice in
       echo -e "${skyblue} 6. 节点搭建${re}"
       echo -e "${skyblue} 7. 端口转发${re}"
       echo -e "${skyblue} 8. dd系统(bin456789)${re}"
-      echo -e "${skyblue} 9. dd系统(史上最强)${re}"
+      echo -e "${skyblue} 9. dd系统(leitbogioro)${re}"
       echo -e "${skyblue} 10. warp管理${re}"
       echo -e "${skyblue} 11. 挂探针${re}"
       echo -e "${skyblue} 12. 安装1Panel${re}"
@@ -398,7 +398,7 @@ case $choice in
               apt update -y
               apt install wget -y
               wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh
-              bash InstallNET.sh -debian 12 -pwd Lyx12345@ -hostname debian12 -port 51888
+              bash InstallNET.sh -debian '1' -pwd 'Lyx12345@' -hostname 'debian12' -port '51888'
               echo -e "${green}脚本已安装完毕，10秒后将重启系统，请耐心等待重装完成...${re}"
               sleep 10
               reboot
