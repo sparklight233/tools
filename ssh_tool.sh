@@ -395,7 +395,7 @@ case $choice in
               echo -e "${red}警告: 重装系统会导致所有数据丢失！请确保已备份重要数据！${re}"
               read -p "是否确认继续执行dd系统操作？(y/n): " confirm_dd
               if [[ $confirm_dd != "y" ]]; then
-                  echo "已取消dd系统操作"
+                  echo -e "${yellow}已取消${re}"
                   break
               fi
     
@@ -406,11 +406,18 @@ case $choice in
               custom_password=${custom_password:-Lyx12345@}  
               curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh || wget -O reinstall.sh $_
               bash reinstall.sh debian12 --password $custom_password
-              echo -e "${yellow}脚本已安装完毕，30秒后将重启系统并开始安装，请牢记下面信息，并耐心等待重装完成...${re}"
+              echo -e "${yellow}请牢记下面信息...${re}"
               echo -e "${yellow}新系统SSH端口为: $current_ssh_port${re}"
               echo -e "${yellow}新系统SSH用户为: root${re}"
               echo -e "${yellow}新系统SSH密码为: $custom_password${re}"
-              sleep 30
+              echo -e "${red}警告: 重装系统会导致所有数据丢失！请确保已备份重要数据！${re}"
+              read -p "最后一次后悔药哦，是否确认继续执行dd系统操作？(y/n): " confirm_reboot
+              if [[ $confirm_reboot != "y" ]]; then
+                  echo -e "${yellow}已取消${re}"
+                  break
+              fi
+              echo -e "${yellow}10秒后将重启系统并开始安装，请耐心等待重装完成...${re}"
+              sleep 10
               reboot
             ;;
          9)
@@ -418,7 +425,7 @@ case $choice in
               echo -e "${red}警告: 重装系统会导致所有数据丢失！请确保已备份重要数据！${re}"
               read -p "是否确认继续执行dd系统操作？(y/n): " confirm_dd
               if [[ $confirm_dd != "y" ]]; then
-                  echo "已取消dd系统操作"
+                  echo -e "${yellow}已取消${re}"
                   break
               fi
 
@@ -435,11 +442,17 @@ case $choice in
               apt install wget -y
               wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh
               bash InstallNET.sh -debian 12 -pwd ${custom_password} -hostname ${custom_hostname} -port ${custom_port}
-              echo -e "${yellow}脚本已安装完毕，30秒后将重启系统并开始安装，请牢记下面信息，并耐心等待重装完成...${re}"
+              echo -e "${yellow}请牢记下面信息...${re}"
               echo -e "${yellow}新系统SSH端口为: $custom_port${re}"
               echo -e "${yellow}新系统SSH用户为: root${re}"
               echo -e "${yellow}新系统SSH密码为: $custom_password${re}"
-              sleep 30
+              read -p "最后一次后悔药哦，是否确认继续执行dd系统操作？(y/n): " confirm_reboot
+              if [[ $confirm_reboot != "y" ]]; then
+                  echo -e "${yellow}已取消${re}"
+                  break
+              fi
+              echo -e "${yellow}10秒后将重启系统并开始安装，请耐心等待重装完成...${re}"
+              sleep 10
               reboot
             ;;
           10)
