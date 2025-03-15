@@ -363,8 +363,8 @@ case $choice in
               if [ -z "$current_ssh_port" ]; then
                       current_ssh_port=22
               fi
-              echo "当前SSH端口为: $current_ssh_port"    
-              read -p "是否启用UFW防火墙？(y/n): " enable_ufw    
+              echo "${yellow}当前SSH端口为: $current_ssh_port${re}"    
+              read -p "${yellow}是否启用UFW防火墙？(y/n): ${re}" enable_ufw    
               if [[ $enable_ufw == "y" ]]; then     
                   sudo apt install ufw -y
                   sudo ufw default allow outgoing
@@ -373,12 +373,12 @@ case $choice in
               fi
               echo "SSH端口 $current_ssh_port 已放行"    
 
-              read -p "确认启用UFW防火墙？启用后如果配置不当可能会断开连接(y/n): " confirm_enable
+              read -p "${red}确认启用UFW防火墙？启用后如果配置不当可能会断开连接(y/n): ${re}" confirm_enable
               if [[ $confirm_enable == "y" ]]; then
                   sudo ufw enable
-                  echo "UFW已启用"
+                  echo "${yellow}UFW已启用${re}"
               else
-                  echo "已取消UFW配置"               
+                  echo "${yellow}已取消UFW配置${re}"               
               fi
             ;;
           6)
