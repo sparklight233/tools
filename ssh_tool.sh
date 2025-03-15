@@ -547,7 +547,7 @@ case $choice in
   00)
     cd ~
     rm ssh_tool.sh
-    curl -fsSL https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/ssh_tool.sh -o ssh_tool.sh && chmod +x ssh_tool.sh && ./ssh_tool.sh    echo -e "${green}脚本已更新到最新版本！${re}"
+    curl -fsSL https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/ssh_tool.sh -o ssh_tool.sh && chmod +x ssh_tool.sh && ./ssh_tool.sh
     echo -e "${green}脚本已更新到最新版本！${re}"
     sleep 1
     main_menu
