@@ -228,6 +228,14 @@ else
             ;;
     esac
 fi
+}
+
+# 主菜单循环
+while true; do
+clear
+echo -e "\033[0;97m-----------------By'eooce-----------------\033[0m"
+echo -e "\033[0;97m脚本地址: https://github.com/eooce/ssh_tool\033[0m" 
+echo ""
 
 while true; do
 clear
