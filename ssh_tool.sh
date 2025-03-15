@@ -96,22 +96,7 @@ main_menu() {
     exit
 }
 
-add_alias() {
-    config_file=$1
-    alias_names=("l" "L")
-    [ ! -f "$config_file" ] || touch "$config_file"
-    for alias_name in "${alias_names[@]}"; do
-        if ! grep -q "alias $alias_name=" "$config_file"; then 
-            echo "Adding alias $alias_name to $config_file"
-            echo "alias $alias_name='cd ~ && ./ssh_tool.sh'" >> "$config_file"
-        fi
-    done
-    . "$config_file"
-}
-config_files=("/root/.bashrc" "/root/.profile" "/root/.bash_profile")
-for config_file in "${config_files[@]}"; do
-    add_alias "$config_file"
-done
+
 
 # 主菜单循环
 while true; do
@@ -404,17 +389,35 @@ case $choice in
              ;;
           8)
               clear
+              echo -e "${red}警告: 重装系统会导致所有数据丢失！请确保已备份重要数据！${re}"
+              read -p "是否确认继续执行dd系统操作？(y/n): " confirm_dd
+              if [[ $confirm_dd != "y" ]]; then
+                  echo "已取消dd系统操作"
+                  break
+              fi
               apt update -y
               apt install wget -y
               wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh
               bash InstallNET.sh -debian 12 -pwd Lyx12345@ -hostname debian12 -port 51888
+              echo -e "${green}脚本已安装完毕，10秒后将重启系统，请耐心等待重装完成...${re}"
+              sleep 10
+              reboot
             ;;
           9)
               clear
+              echo -e "${red}警告: 重装系统会导致所有数据丢失！请确保已备份重要数据！${re}"
+              read -p "是否确认继续执行dd系统操作？(y/n): " confirm_dd
+              if [[ $confirm_dd != "y" ]]; then
+                  echo "已取消dd系统操作"
+                  break
+              fi
               apt update -y
               apt install wget -y
               wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh
               bash InstallNET.sh -debian -password Lyx12345@ -hostname debian12 -port 51888
+              echo -e "${green}脚本已安装完毕，10秒后将重启系统，请耐心等待重装完成...${re}"
+              sleep 10
+              reboot
             ;;
           10)
               clear
