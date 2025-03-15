@@ -431,7 +431,7 @@ case $choice in
               apt update -y
               apt install wget -y
               wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh
-              bash InstallNET.sh -debian 12 -pwd [${custom_password}] -hostname [${custom_hostname}] -port [${custom_port}]
+              bash InstallNET.sh -debian 12 -pwd ${custom_password} -hostname ${custom_hostname} -port ${custom_port}
               echo -e "${yellow}脚本已安装完毕，30秒后将重启系统并开始安装，请牢记下面信息，并耐心等待重装完成...${re}"
               echo -e "${yellow}新系统SSH端口为: $custom_port${re}"
               echo -e "${yellow}新系统SSH用户为: root${re}"
