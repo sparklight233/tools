@@ -521,7 +521,7 @@ case $choice in
   00)
     cd ~
     curl -sS -O https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/ssh_tool.sh && chmod +x ssh_tool.sh
-    echo -e "${green}脚本状态良好，请求出战！${re}"
+    echo -e "${green}脚本已更新到最新版本${re}"
     sleep 1
     main_menu
     ;;
