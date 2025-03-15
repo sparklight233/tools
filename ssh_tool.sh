@@ -373,7 +373,7 @@ case $choice in
               fi
               echo -e "${yellow}SSH端口 $current_ssh_port 已放行${re}"    
 
-              read -e "确认启用UFW防火墙？启用后如果配置不当可能会断开连接(y/n): " confirm_enable
+              read -p "确认启用UFW防火墙？启用后如果配置不当可能会断开连接(y/n): " confirm_enable
               if [[ $confirm_enable == "y" ]]; then
                   yes | sudo ufw enable
                   echo -p "${yellow}UFW已启用${re}"
