@@ -162,7 +162,6 @@ if docker inspect "$docker_name" &>/dev/null; then
     echo "0. 返回上一级选单"
     echo "------------------------"
     read -p $'\033[1;91m请输入你的选择: \033[0m' sub_choice
-}
 
     case $sub_choice in
         1)
@@ -229,7 +228,6 @@ else
             ;;
     esac
 fi
-
 
 while true; do
 clear
