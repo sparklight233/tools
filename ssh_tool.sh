@@ -117,7 +117,7 @@ done
 while true; do
 clear
 echo -e "\033[0;97m-----------------By'eooce-----------------\033[0m"
-echo -e "\033[0;97m脚本地址: https://github.com/eooce/ssh_tool\033[0m" 
+echo -e "\033[0;97m脚本地址: https://github.com/sparklight233/ssh_tool\033[0m" 
 echo ""
 echo -e "${skyblue} ##  ## #####   ####       ######  ####   ####  ##      ${re}" 
 echo -e "${skyblue} ##  ## ##  ## ##            ##   ##  ## ##  ## ##      ${re}" 
@@ -126,9 +126,7 @@ echo -e "${skyblue}  ####  ##         ##        ##   ##  ## ##  ## ##      ${re}
 echo -e "${skyblue}   ##   ##     ####          ##    ####   ####  ######  ${re}"  
 echo -e ""
 echo -e "                 ${yellow}VPS一键脚本工具 v8.8.8${re}"
-echo -e "${yellow}支持Ubuntu/Debian/CentOS/Alpine/Fedora/Rocky/Almalinux/Oracle-linux${re}"
 echo -e ""
-echo -e "${skyblue}快捷键已设置为${yellow}l,${skyblue}下次运行输入${yellow}l${skyblue}可快速启动此脚本${re}"
 echo "-------------------------------------------------------------------"
 echo -e "${green} 1. 本机信息${re}"
 echo -e "${green} 2. 系统更新${re}"
