@@ -117,7 +117,8 @@ echo -e "${green} 3. 系统清理${re}"
 echo -e "${green} 4. 系统工具${re}"
 echo -e "${green} 5. 测试脚本${re}"
 echo "-------------------------------------------------------------------"       
-echo -e "${purple} 6. 魔法工具${re}"               
+echo -e "${purple} 6. 魔法工具${re}"        
+echo -e "${green}00. 脚本更新${re}"
 echo "-------------------------------------------------------------------"
 echo -e "${red} 88. 退出脚本${re}"
 echo -e "${yellow}-------------------------------------------------------------------${re}"
@@ -334,11 +335,13 @@ case $choice in
       case $sub_choice in
           1)
               clear
+              install wget
               wget https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/sh/magic.sh && chmod +x magic.sh && ./magic.sh
                rm magic.sh
             ;;
           2)
               clear
+              install wget
               wget -q https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/sh/ssh.sh && chmod +x  ssh.sh && ./ssh.sh
               rm ssh.sh
             ;;
@@ -536,11 +539,20 @@ case $choice in
  
   6)
     clear
+    install wget
     wget https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/sh/magic.sh && chmod +x magic.sh && ./magic.sh
     rm magic.sh
     ;;
 
-
+  00)
+    cd ~
+    rm ssh_tool.sh
+    echo ""
+    curl -fsSL https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/ssh_tool.sh -o ssh_tool.sh && chmod +x ssh_tool.sh && ./ssh_tool.sh    echo -e "${green}脚本已更新到最新版本！${re}"
+    sleep 1
+    main_menu
+    ;;
+    
   88)
     clear
     exit
