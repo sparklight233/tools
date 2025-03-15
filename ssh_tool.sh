@@ -398,7 +398,7 @@ case $choice in
               apt update -y
               apt install wget -y
               wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh
-              bash InstallNET.sh -debian '1' -pwd 'Lyx12345@' -hostname 'debian12' -port '51888'
+              bash InstallNET.sh -debian [12] -pwd [Lyx12345@] -hostname [debian12] -port [51888]
               echo -e "${green}脚本已安装完毕，10秒后将重启系统，请耐心等待重装完成...${re}"
               sleep 10
               reboot
