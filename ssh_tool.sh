@@ -118,7 +118,7 @@ echo -e "${green} 4. 系统工具${re}"
 echo -e "${green} 5. 测试脚本${re}"
 echo "-------------------------------------------------------------------"       
 echo -e "${purple} 6. 魔法工具${re}"        
-echo -e "${green}00. 脚本更新${re}"
+echo -e "${purple} 7. 脚本更新${re}"
 echo "-------------------------------------------------------------------"
 echo -e "${red} 88. 退出脚本${re}"
 echo -e "${yellow}-------------------------------------------------------------------${re}"
@@ -363,20 +363,20 @@ case $choice in
               if [ -z "$current_ssh_port" ]; then
                       current_ssh_port=22
               fi
-              echo "${yellow}当前SSH端口为: $current_ssh_port${re}"    
-              read -p "${yellow}是否启用UFW防火墙？(y/n): ${re}" enable_ufw    
+              echo -e "${yellow}当前SSH端口为: $current_ssh_port${re}"    
+              read -p "是否启用UFW防火墙？(y/n): " enable_ufw    
               if [[ $enable_ufw == "y" ]]; then     
                   sudo apt install ufw -y
                   sudo ufw default allow outgoing
                   sudo ufw default deny incoming
                   sudo ufw allow "$current_ssh_port"/tcp      
               fi
-              echo "SSH端口 $current_ssh_port 已放行"    
+              echo -e "${yellow}SSH端口 $current_ssh_port 已放行${re}"    
 
-              read -p "${red}确认启用UFW防火墙？启用后如果配置不当可能会断开连接(y/n): ${re}" confirm_enable
+              read -e "确认启用UFW防火墙？启用后如果配置不当可能会断开连接(y/n): " confirm_enable
               if [[ $confirm_enable == "y" ]]; then
-                  sudo ufw enable
-                  echo "${yellow}UFW已启用${re}"
+                  yes | sudo ufw enable
+                  echo -p "${yellow}UFW已启用${re}"
               else
                   echo "${yellow}已取消UFW配置${re}"               
               fi
@@ -544,10 +544,9 @@ case $choice in
     rm magic.sh
     ;;
 
-  00)
+  7)
     cd ~
     rm ssh_tool.sh
-    echo ""
     curl -fsSL https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/ssh_tool.sh -o ssh_tool.sh && chmod +x ssh_tool.sh && ./ssh_tool.sh    echo -e "${green}脚本已更新到最新版本！${re}"
     sleep 1
     main_menu
