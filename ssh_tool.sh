@@ -550,7 +550,7 @@ case $choice in
     curl -fsSL https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/ssh_tool.sh -o ssh_tool.sh && chmod +x ssh_tool.sh
     sleep 1
     echo -e "${green}脚本已更新到最新版本！${re}"
-    sleep 2
+    sleep 1
     ./ssh_tool.sh
     ;;
     
