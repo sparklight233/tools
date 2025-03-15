@@ -51,7 +51,9 @@ backup_ssh_config() {
 # 函数：修改SSH端口
 change_ssh_port() {
     greenline
+    # 从配置文件中读取当前端口
     current_port=$(grep -w "^Port" $SSH_CONFIG | awk '{print $2}')
+    # 如果未找到端口配置，则默认为22
     if [ -z "$current_port" ]; then
         current_port=22
     fi
@@ -65,10 +67,12 @@ change_ssh_port() {
             
             # 验证端口号是否在有效范围内
             if [[ $new_port -ge 1 && $new_port -le 65535 ]]; then
-                # 替换或添加端口配置
+                # 检查配置文件中是否已存在Port配置行
                 if grep -q "^Port " $SSH_CONFIG; then
+                    # 如果存在，使用sed替换该行
                     sed -i "s/^Port .*/Port $new_port/" $SSH_CONFIG
                 else
+                    # 如果不存在，添加新行
                     echo "Port $new_port" >> $SSH_CONFIG
                 fi
                 color_print green "SSH端口已修改为：$new_port"
