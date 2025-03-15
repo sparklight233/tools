@@ -387,7 +387,7 @@ case $choice in
               wget -N https://raw.githubusercontent.com/qqrrooty/EZrealm/main/realm.sh && chmod +x realm.sh && ./realm.sh
               rm realm.sh
              ;;
-          8)
+         8)
               clear
               echo -e "${red}警告: 重装系统会导致所有数据丢失！请确保已备份重要数据！${re}"
               read -p "是否确认继续执行dd系统操作？(y/n): " confirm_dd
@@ -395,15 +395,22 @@ case $choice in
                   echo "已取消dd系统操作"
                   break
               fi
-              apt update -y
-              apt install wget -y
-              wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh
-              bash InstallNET.sh -debian [12] -pwd [Lyx12345@] -hostname [debian12] -port [51888]
-              echo -e "${green}脚本已安装完毕，10秒后将重启系统，请耐心等待重装完成...${re}"
-              sleep 10
+    
+              current_ssh_port=$(grep -E "^Port " /etc/ssh/sshd_config | awk '{print $2}')
+              current_ssh_port=${current_ssh_port:-22}
+              echo -e "${green}当前SSH端口为: ${current_ssh_port}${re}"
+              read -p "请设置系统密码(默认: Lyx12345@): " custom_password
+              custom_password=${custom_password:-Lyx12345@}  
+              curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh || wget -O reinstall.sh $_
+              bash reinstall.sh debian12 --password $custom_password
+              echo -e "${yellow}脚本已安装完毕，30秒后将重启系统并开始安装，请牢记下面信息，并耐心等待重装完成...${re}"
+              echo -e "${yellow}新系统SSH端口为: $current_ssh_port${re}"
+              echo -e "${yellow}新系统SSH用户为: root${re}"
+              echo -e "${yellow}新系统SSH密码为: $custom_password${re}"
+              sleep 30
               reboot
             ;;
-          9)
+         9)
               clear
               echo -e "${red}警告: 重装系统会导致所有数据丢失！请确保已备份重要数据！${re}"
               read -p "是否确认继续执行dd系统操作？(y/n): " confirm_dd
@@ -411,12 +418,25 @@ case $choice in
                   echo "已取消dd系统操作"
                   break
               fi
+
+              read -p "请设置系统密码(默认: Lyx12345@): " custom_password
+              custom_password=${custom_password:-Lyx12345@}
+        
+              read -p "请设置SSH端口(默认: 51888): " custom_port
+              custom_port=${custom_port:-51888}
+        
+              read -p "请设置主机名(默认: debian12): " custom_hostname
+              custom_hostname=${custom_hostname:-debian12}
+              
               apt update -y
               apt install wget -y
               wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh
-              bash InstallNET.sh -debian -password Lyx12345@ -hostname debian12 -port 51888
-              echo -e "${green}脚本已安装完毕，10秒后将重启系统，请耐心等待重装完成...${re}"
-              sleep 10
+              bash InstallNET.sh -debian 12 -pwd [${custom_password}] -hostname [${custom_hostname}] -port [${custom_port}]
+              echo -e "${yellow}脚本已安装完毕，30秒后将重启系统并开始安装，请牢记下面信息，并耐心等待重装完成...${re}"
+              echo -e "${yellow}新系统SSH端口为: $custom_port${re}"
+              echo -e "${yellow}新系统SSH用户为: root${re}"
+              echo -e "${yellow}新系统SSH密码为: $custom_password${re}"
+              sleep 30
               reboot
             ;;
           10)
