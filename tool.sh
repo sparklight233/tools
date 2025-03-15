@@ -587,7 +587,11 @@ case $choice in
           *)
               echo "无效的输入!"
               ;;
- 
+       esac
+      break_end
+    done
+    ;;
+
  
   5)
     while true; do
@@ -1030,11 +1034,14 @@ case $choice in
           *)
               echo "无效的输入!"
               ;;
-
+      esac
+      break_end
+      ;;
   8)
     clear
     wget https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/sh/magic.sh && chmod +x magic.sh && ./magic.sh
     rm magic.sh
+    ;;
   00)
     cd ~
     curl -sS -O https://raw.githubusercontent.com/eooce/ssh_tool/main/update_log.sh && chmod +x update_log.sh && ./update_log.sh
