@@ -118,8 +118,8 @@ echo -e "${green} 4. 系统工具${re}"
 echo -e "${green} 5. 测试脚本${re}"
 echo "-------------------------------------------------------------------"       
 echo -e "${purple} 6. 魔法工具${re}"        
-echo -e "${purple} 7. 脚本更新${re}"
 echo "-------------------------------------------------------------------"
+echo -e "${red} 00. 脚本更新${re}"
 echo -e "${red} 88. 退出脚本${re}"
 echo -e "${yellow}-------------------------------------------------------------------${re}"
 read -p $'\033[1;91m请输入你的选择: \033[0m' choice
@@ -544,10 +544,11 @@ case $choice in
     rm magic.sh
     ;;
 
-  7)
+  00)
     cd ~
     rm ssh_tool.sh
     curl -fsSL https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/ssh_tool.sh -o ssh_tool.sh && chmod +x ssh_tool.sh && ./ssh_tool.sh    echo -e "${green}脚本已更新到最新版本！${re}"
+    echo -e "${green}脚本已更新到最新版本！${re}"
     sleep 1
     main_menu
     ;;
