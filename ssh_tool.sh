@@ -337,7 +337,7 @@ case $choice in
               clear
               install wget
               wget https://raw.githubusercontent.com/sparklight233/tools/refs/heads/main/sh/magic.sh && chmod +x magic.sh && ./magic.sh
-               rm magic.sh
+              rm magic.sh
             ;;
           2)
               clear
@@ -459,6 +459,7 @@ case $choice in
               clear
               install wget
               wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
+              rm menu.sh
             ;;
           11)
               clear
@@ -486,6 +487,7 @@ case $choice in
               clear
               curl -fsSL https://get.docker.com -o get-docker.sh
               sudo sh get-docker.sh
+              rm get-docker.sh
             ;;
           0)
               main_menu
