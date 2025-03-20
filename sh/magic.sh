@@ -52,9 +52,9 @@ ufw default deny incoming
 # 安装Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
+rm get-docker.sh
 
 # 挂探针
-mkdir -p /root/data/cgent
 mkdir -p /root/cgent
 docker run -d -v=/root/cgent/:/root/ \
     --name=cgent --restart=always --net=host --cap-add=NET_RAW \
