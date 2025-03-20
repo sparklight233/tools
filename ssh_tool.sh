@@ -388,7 +388,7 @@ case $choice in
           7)
               clear
               wget -N https://raw.githubusercontent.com/qqrrooty/EZrealm/main/realm.sh && chmod +x realm.sh && ./realm.sh
-              rm realm.sh
+              rm /root/realm.sh
              ;;
          8)
               clear
