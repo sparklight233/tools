@@ -315,19 +315,20 @@ case $choice in
       echo -e "${yellow} 1. 魔法工具${re}"
       echo "------------------------"
       echo -e "${skyblue} 2. 修改ssh设置${re}"
-      echo -e "${skyblue} 3. 虚拟内存${re}"
-      echo -e "${skyblue} 4. BBR管理${re}"
-      echo -e "${skyblue} 5. 安装防火墙${re}"
-      echo -e "${skyblue} 6. 节点搭建${re}"
-      echo -e "${skyblue} 7. 端口转发${re}"
-      echo -e "${skyblue} 8. dd系统(bin456789)${re}"
-      echo -e "${skyblue} 9. dd系统(leitbogioro)${re}"
-      echo -e "${skyblue} 10. warp管理${re}"
-      echo -e "${skyblue} 11. 挂探针${re}"
-      echo -e "${skyblue} 12. 安装1Panel${re}"
-      echo -e "${skyblue} 13. DNS解锁${re}"
-      echo -e "${skyblue} 14. 必要组件${re}"
-      echo -e "${skyblue} 15. 安装docker${re}"        
+      echo -e "${skyblue} 3. BBR管理${re}"
+      echo -e "${skyblue} 4. 防火墙${re}"
+      echo -e "${skyblue} 5. 节点搭建${re}"
+      echo -e "${skyblue} 6. 端口转发${re}"
+      echo -e "${skyblue} 7. dd系统(bin456789)${re}"
+      echo -e "${skyblue} 8. dd系统(leitbogioro)${re}"
+      echo -e "${skyblue} 9. warp管理${re}"
+      echo -e "${skyblue} 10. 挂探针${re}"
+      echo -e "${skyblue} 11. 安装1Panel${re}"
+      echo -e "${skyblue} 12. DNS解锁${re}"
+      echo -e "${skyblue} 13. zram虚拟内存${re}"
+      echo -e "${skyblue} 14. swap虚拟内存${re}"
+      echo -e "${skyblue} 15. 必要组件${re}"
+      echo -e "${skyblue} 16. 安装docker${re}"        
       echo "---------------------------"
       echo -e "${skyblue} 0. 返回主菜单${re}"
       read -p $'\033[1;91m请输入你的选择: \033[0m' sub_choice
@@ -347,16 +348,11 @@ case $choice in
             ;;
           3)
               clear
-              curl -sS -O https://raw.githubusercontent.com/woniu336/open_shell/main/zram_manager.sh && chmod +x zram_manager.sh && ./zram_manager.sh
-              rm zram_manager.sh
-            ;;
-          4)
-              clear
               install wget
               wget --no-check-certificate -O tcpx.sh https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcpx.sh && chmod +x tcpx.sh && ./tcpx.sh
               rm tcpx.sh
             ;;
-          5)
+          4)
               clear
               current_ssh_port=$(grep "^Port" /etc/ssh/sshd_config | awk '{print $2}')
     
@@ -381,16 +377,16 @@ case $choice in
                   echo "${yellow}已取消UFW配置${re}"               
               fi
             ;;
-          6)
+          5)
               clear
               bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh)
              ;;
-          7)
+          6)
               clear
               wget -N https://raw.githubusercontent.com/qqrrooty/EZrealm/main/realm.sh && chmod +x realm.sh && ./realm.sh
               rm /root/realm.sh
              ;;
-         8)
+         7)
               clear
               echo -e "${red}警告: 重装系统会导致所有数据丢失！请确保已备份重要数据！${re}"
               read -p "是否确认继续执行dd系统操作？(y/n): " confirm_dd
@@ -420,7 +416,7 @@ case $choice in
               sleep 10
               reboot
             ;;
-         9)
+         8)
               clear
               echo -e "${red}警告: 重装系统会导致所有数据丢失！请确保已备份重要数据！${re}"
               read -p "是否确认继续执行dd系统操作？(y/n): " confirm_dd
@@ -455,35 +451,45 @@ case $choice in
               sleep 10
               reboot
             ;;
-          10)
+          9)
               clear
               install wget
               wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh [option] [lisence/url/token]
               rm menu.sh
             ;;
-          11)
+          10)
               clear
               mkdir -p /root/data/cgent
               mkdir /root/data/cgent
               docker run -d -v=/root/cgent/:/root/ --name=cgent --restart=always --net=host --cap-add=NET_RAW -e SECRET=8vb0R7wuNjrXdxZgkrNQAgsRhfyhtesF -e SERVER=nezha.20061222.xyz:443 -e TLS=true ghcr.io/yosebyte/cgent
             ;;
-          12)
+          11)
               clear
               curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh && sudo bash quick_start.sh
             ;;
-          13)
+          12)
               clear
               wget https://raw.githubusercontent.com/Jimmyzxk/DNS-Alice-Unlock/refs/heads/main/dns-unlock.sh && bash dns-unlock.sh
               rm dns-unlock.sh
             ;;
+          13)
+              clear
+              curl -sS -O https://raw.githubusercontent.com/woniu336/open_shell/main/zram_manager.sh && chmod +x zram_manager.sh && ./zram_manager.sh
+              rm zram_manager.sh
+            ;;
           14)
+              clear
+              curl -sS -O wget https://raw.githubusercontent.com/zhucaidan/swap.sh/main/swap.sh && bash swap.sh && chmod +x swap.sh && ./swap.sh
+              rm swap.sh
+            ;;
+          15)
               clear
               apt update -y
               apt install sudo
               apt install wget -y
               apt install curl -y
             ;;
-          15)
+          16)
               clear
               curl -fsSL https://get.docker.com -o get-docker.sh
               sudo sh get-docker.sh
@@ -505,11 +511,12 @@ case $choice in
       echo -e "${purple}▶ 测试脚本合集${re}"
       echo ""
       echo -e "${skyblue} 1. 融合怪${re}"
-      echo -e "${skyblue} 2. yabs${re}"
-      echo -e "${skyblue} 3. 网络质量${re}"
-      echo -e "${skyblue} 4. IP解锁${re}"
-      echo -e "${skyblue} 5. 三网测速${re}"
-      echo -e "${skyblue} 6. 回程路由${re}"
+      echo -e "${skyblue} 2. NodeQuality${re}"
+      echo -e "${skyblue} 3. yabs${re}"
+      echo -e "${skyblue} 4. 网络质量${re}"
+      echo -e "${skyblue} 5. IP解锁${re}"
+      echo -e "${skyblue} 6. 三网测速${re}"
+      echo -e "${skyblue} 7. 回程路由${re}"
       echo "---------------------------"
       echo -e "${skyblue} 0. 返回主菜单${re}"
       echo "---------------------------"
@@ -518,29 +525,39 @@ case $choice in
           1)
               clear
               curl -L https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh -o ecs.sh && chmod +x ecs.sh && bash ecs.sh
+              rm ecs.sh
               ;;
           2)
               clear
-              curl -sL https://yabs.sh | bash
+              bash <(curl -sL https://run.NodeQuality.com)
+              rm NodeQuality.sh
               ;;
           3)
               clear
-              bash <(curl -sL Net.Check.Place)
+              curl -sL https://yabs.sh | bash
+              rm yabs.sh
               ;;
           4)
               clear
-              bash <(curl -Ls IP.Check.Place)
+              bash <(curl -sL Net.Check.Place)
+              rm net.sh
               ;;
           5)
               clear
-              bash <(curl -sL https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh)
+              bash <(curl -Ls IP.Check.Place)
+              rm ip.sh
               ;;
           6)
+              clear
+              bash <(curl -sL https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh)
+              rm speedtest.sh
+              ;;
+          7)
               clear
               curl nxtrace.org/nt |bash
               nexttrace --fast-trace --tcp
               ;;
-          0)
+          9)
               main_menu
               ;;
           *)
