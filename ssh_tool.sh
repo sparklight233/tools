@@ -559,6 +559,9 @@ case $choice in
           9)
               main_menu
               ;;
+          0)
+              main_menu
+              ;;
           *)
               echo "无效的输入!"
               ;;
