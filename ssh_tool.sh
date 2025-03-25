@@ -530,7 +530,6 @@ case $choice in
           2)
               clear
               bash <(curl -sL https://run.NodeQuality.com)
-              rm NodeQuality.sh
               ;;
           3)
               clear
