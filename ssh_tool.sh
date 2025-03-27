@@ -431,8 +431,8 @@ case $choice in
               read -p "请设置SSH端口(默认: 51888): " custom_port
               custom_port=${custom_port:-51888}
         
-              read -p "请设置主机名(默认: debian12): " custom_hostname
-              custom_hostname=${custom_hostname:-debian12}
+              read -p "请设置主机名(默认: localhost): " custom_hostname
+              custom_hostname=${custom_hostname:-localhost}
               
               apt update -y
               apt install wget -y
