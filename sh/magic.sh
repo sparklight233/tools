@@ -48,6 +48,7 @@ systemctl restart sshd
 apt install ufw -y
 ufw default allow outgoing 
 ufw default deny incoming
+ufw allow 51888
 
 # 设置虚拟内存
 sudo fallocate -l 2G /swapfile
