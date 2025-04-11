@@ -462,8 +462,6 @@ case $choice in
               mkdir -p /root/data/cgent
               mkdir /root/data/cgent
               docker run -d -v=/root/cgent/:/root/ --name=cgent --restart=always --net=host --cap-add=NET_RAW -e SECRET=8vb0R7wuNjrXdxZgkrNQAgsRhfyhtesF -e SERVER=nezha.20061222.xyz:443 -e TLS=true ghcr.io/yosebyte/cgent
-              sudo sed -i 's/disable_command_execute: false/disable_command_execute: true/' /root/cgent/config.yml
-
             ;;
           11)
               clear
